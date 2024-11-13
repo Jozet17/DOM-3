@@ -1,0 +1,73 @@
+body {
+    background-image: url('https://static0.gamerantimages.com/wordpress/wp-content/uploads/2024/01/featurede.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.contenedor-principal {
+    width: 60%;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 8px;
+    border: red 3px solid;
+}
+
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+.barra-busqueda {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+input {
+    padding: 10px;
+    width: 250px;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#resultadoBusqueda {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: red 3px solid;
+    color: rgb(255, 255, 255);
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: transparent;
+}
+
+tbody tr:hover {
+    background-color: #c6f14d;
+}
