@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Búsqueda en Tabla</title>
+    <link rel="stylesheet" href="estilos3.css"> 
+</head>
+<body>
+    <div class="contenedor-principal">
+        <h2>Diccionario de Términos</h2>
+
+        <div class="barra-busqueda">
+            <input type="text" id="inputBusqueda" placeholder="Escribe un término...">
+            <button id="btnBuscar">Buscar</button>
+        </div>
+
+        <div id="resultadoBusqueda">
+            <p><strong>Resultado:</strong> <span id="totalCoincidencias">0</span> coincidencias encontradas.</p>
+        </div>
+
+        <table id="tablaTerminos" border="1">
+            <thead>
+                <tr>
+                    <th>Término</th>
+                    <th>Descripción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML</td>
+                    <td>Lenguaje de marcado para la creación de páginas web.</td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>Lenguaje de hojas de estilo usado para diseñar la presentación de las páginas web.</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Lenguaje de programación para crear páginas web interactivas.</td>
+                </tr>
+                <tr>
+                    <td>React</td>
+                    <td>Librería JavaScript para la construcción de interfaces de usuario.</td>
+                </tr>
+                <tr>
+                    <td>Node.js</td>
+                    <td>Entorno de ejecución de JavaScript del lado del servidor.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const btnBuscar = document.getElementById("btnBuscar");
+        const inputBusqueda = document.getElementById("inputBusqueda");
+        const resultadoBusqueda = document.getElementById("resultadoBusqueda");
+        const totalCoincidencias = document.getElementById("totalCoincidencias");
+        const tablaTerminos = document.getElementById("tablaTerminos").getElementsByTagName('tbody')[0];
+
+        function realizarBusqueda() {
+            const terminoBusqueda = inputBusqueda.value.trim().toLowerCase(); 
+            let contadorCoincidencias = 0; 
+
+            for (let i = 0; i < tablaTerminos.rows.length; i++) {
+                const celdas = tablaTerminos.rows[i].cells;
+                let filaCoincide = false; 
+
+                for (let j = 0; j < celdas.length; j++) {
+                    if (celdas[j].textContent.toLowerCase().includes(terminoBusqueda)) {
+                        filaCoincide = true;
+                        break;
+                    }
+                }
+                if (filaCoincide) {
+                    tablaTerminos.rows[i].style.display = "";
+                    contadorCoincidencias++; 
+                } else {
+                    tablaTerminos.rows[i].style.display = "none"; 
+                }
+            }
+
+            totalCoincidencias.textContent = contadorCoincidencias;
+        }
+
+        btnBuscar.addEventListener("click", realizarBusqueda);
+        inputBusqueda.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                realizarBusqueda();
+            }
+        });
+    </script>
+
+</body>
+</html>
